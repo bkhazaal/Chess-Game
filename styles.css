@@ -14,6 +14,8 @@
 
 p {
     text-align: center;
+    margin-top: 30px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -22,24 +24,24 @@ p {
     width: 40px;
 }
 
-.beige {
-    background-color: beige;
+.gray {
+    background-color: rgb(171, 168, 168);
 }
 
 .square svg {
     height: 30px;
     width: 30px;
-    margin: 5px
+    margin: 5px;
 }
 
 .brown {
-    background-color: brown;
+    background-color: rgb(147, 76, 50);
 }
 
-.black {
+.black svg {
     fill: black;
 }
 
-.white {
+.white svg {
     fill: white;
 }
