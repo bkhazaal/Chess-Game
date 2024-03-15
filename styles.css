@@ -39,3 +39,7 @@ p {
 .black {
     fill: black;
 }
+
+.white {
+    fill: white;
+}

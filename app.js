@@ -26,7 +26,7 @@ function createBoard() {
         } else {
             square.classList.add(i % 2 === 0 ? "brown" : "beige");
         }
-
+        
         gameBoard.append(square);
     })
 }
