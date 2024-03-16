@@ -18,7 +18,6 @@ function createBoard() {
     startPieces.forEach((startPiece, i) => {
         const square = document.createElement('div');
         square.classList.add('square');
-        square.innerHTML = startPiece;
         square.setAttribute('square-id', i);
         const row = Math.floor ((63-i)/8) + 1;
         if (row % 2 === 0) {
@@ -27,14 +26,21 @@ function createBoard() {
             square.classList.add(i % 2 === 0 ? "brown" : "gray");
         }
 
-        gameBoard.append(square);
+    gameBoard.append(square);
+
+    const pieceSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    pieceSVG.setAttribute('draggable', true);
+    pieceSVG.innerHTML = startPiece;
+
+    square.appendChild(pieceSVG);
 
         if (i < 16) {
             square.classList.add('black');
         } else {
             square.classList.add('white');
         }
-    })
+
+    });
 }
 
 createBoard();
