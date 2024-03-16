@@ -29,15 +29,17 @@ function createBoard() {
     gameBoard.append(square);
 
     const pieceSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    pieceSVG.setAttribute('draggable', true);
     pieceSVG.innerHTML = startPiece;
 
     square.appendChild(pieceSVG);
 
         if (i < 16) {
             square.classList.add('black');
-        } else {
+            square.style.cursor = 'move';
+
+        } else if (i > 47) {
             square.classList.add('white');
+            square.style.cursor = 'move';
         }
 
     });
