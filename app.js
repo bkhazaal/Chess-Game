@@ -44,14 +44,35 @@ function createBoard() {
     
         pieceSVG.addEventListener('click', () => {
             console.log('clicked')
-        })
+        });
+
+        square.ondrop = drop;
+        square.ondragover = allowDrop;
+        pieceSVG.draggable = true;
+        pieceSVG.ondragstart = drag;
 
     });
-    
-}
 
-function Turns() {
-    PlayerDisplay.textContent = "Player";
+    function allowDrop(ev) {
+        ev.preventDefault();
+      }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text/plain", ev.target.id);
+      }
+
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text/plain");
+        ev.target.appendChild(document.getElementById(data));
+      }
+
+    function Turns() {
+        PlayerDisplay.textContent = "Player";
+    }
+
+    PlayerDisplay.setAttribute("onload", Turns());
+    
 }
 
 createBoard();
