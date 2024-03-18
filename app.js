@@ -41,9 +41,17 @@ function createBoard() {
             pieceSVG.classList.add('white');
             pieceSVG.style.cursor = 'move';
         }
+    
+        pieceSVG.addEventListener('click', () => {
+            console.log('clicked')
+        })
 
     });
     
+}
+
+function Turns() {
+    PlayerDisplay.textContent = "Player";
 }
 
 createBoard();
