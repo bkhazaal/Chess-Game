@@ -34,12 +34,12 @@ function createBoard() {
     square.appendChild(pieceSVG);
 
         if (i < 16) {
-            square.classList.add('black');
-            square.style.cursor = 'move';
+            pieceSVG.classList.add('black');
+            pieceSVG.style.cursor = 'move';
 
         } else if (i > 47) {
-            square.classList.add('white');
-            square.style.cursor = 'move';
+            pieceSVG.classList.add('white');
+            pieceSVG.style.cursor = 'move';
         }
 
     });
