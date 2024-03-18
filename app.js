@@ -29,8 +29,8 @@ function createBoard() {
     gameBoard.append(square);
 
     const pieceSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    pieceSVG.setAttribute("id", "piece_" + i);
     pieceSVG.innerHTML = startPiece;
-
     square.appendChild(pieceSVG);
 
         if (i < 16) {
@@ -46,33 +46,36 @@ function createBoard() {
             console.log('clicked')
         });
 
-        square.ondrop = drop;
-        square.ondragover = allowDrop;
-        pieceSVG.draggable = true;
-        pieceSVG.ondragstart = drag;
-
+        square.addEventListener("drop", drop);
+        square.addEventListener("dragover", allowDrop);
+        pieceSVG.addEventListener("dragstart", drag);
+        pieceSVG.addEventListener("mousedown", (e) => e.preventDefault());
+        
     });
 
-    function allowDrop(ev) {
-        ev.preventDefault();
-      }
-
-    function drag(ev) {
-        ev.dataTransfer.setData("text/plain", ev.target.id);
-      }
-
-      function drop(ev) {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("text/plain");
-        ev.target.appendChild(document.getElementById(data));
-      }
-
-    function Turns() {
-        PlayerDisplay.textContent = "Player";
-    }
-
-    PlayerDisplay.setAttribute("onload", Turns());
+    Turns();
     
-}
+} 
+        function allowDrop(ev) {
+            ev.preventDefault();
+            console.log("beingcalled1")
+          }
+    
+        function drag(ev) {
+            ev.dataTransfer.setData("text/plain", ev.target.id);
+            console.log("beingcalled2")
+          }
+    
+          function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text/plain");
+            ev.target.appendChild(document.getElementById(data));
+            console.log("beingcalled3")
+          }
+    
+        function Turns() {
+            PlayerDisplay.textContent = "Player";
+    
+        }
 
 createBoard();
