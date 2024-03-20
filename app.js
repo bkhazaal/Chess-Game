@@ -28,6 +28,7 @@ function createBoard() {
 
     gameBoard.append(square);
 
+    
     const pieceSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     pieceSVG.setAttribute("id", "piece_" + i);
     pieceSVG.innerHTML = startPiece;
@@ -53,29 +54,30 @@ function createBoard() {
         
     });
 
+    function allowDrop(ev) {
+        ev.preventDefault();
+        console.log("beingcalled1")
+      }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text/plain", ev.target.id);
+        console.log("beingcalled2")
+      }
+
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text/plain");
+        ev.target.appendChild(document.getElementById(data));
+        console.log("beingcalled3")
+      }
+
+    function Turns() {
+        PlayerDisplay.textContent = "Player";
+
+    }
+
     Turns();
     
 } 
-        function allowDrop(ev) {
-            ev.preventDefault();
-            console.log("beingcalled1")
-          }
-    
-        function drag(ev) {
-            ev.dataTransfer.setData("text/plain", ev.target.id);
-            console.log("beingcalled2")
-          }
-    
-          function drop(ev) {
-            ev.preventDefault();
-            var data = ev.dataTransfer.getData("text/plain");
-            ev.target.appendChild(document.getElementById(data));
-            console.log("beingcalled3")
-          }
-    
-        function Turns() {
-            PlayerDisplay.textContent = "Player";
-    
-        }
 
 createBoard();
