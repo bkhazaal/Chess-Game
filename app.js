@@ -48,13 +48,21 @@ function createBoard() {
             pieceContainer.style.cursor = 'move';
         }
     
-        pieceContainer.addEventListener('click', () => {
+        pieceSVG.addEventListener('click', () => {
             console.log('clicked')
         });
 
-        pieceContainer.addEventListener('dragstart', function(event) {
+        pieceSVG.addEventListener('dragstart', function(event) {
             console.log(event);
         });
+
+        square.addEventListener('dragover', function(event) {
+            event.preventDefault();
+        });
+
+        square.addEventListener('drop', function(event){
+            square.prepend(pieceContainer);
+        })
     });
     
     function Turns() {
