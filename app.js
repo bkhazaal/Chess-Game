@@ -14,6 +14,7 @@ const startPieces = [
     rook, knight, bishop, queen, king, bishop, knight, rook,
 ]
 
+
 function createBoard() {
     startPieces.forEach((startPiece, i) => {
         const square = document.createElement('div');
@@ -34,7 +35,7 @@ function createBoard() {
         pieceContainer.setAttribute('draggable', true);
         
         const pieceSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        pieceSVG.setAttribute("id", "piece_" + i);
+        pieceSVG.setAttribute("id", +i);
         pieceSVG.innerHTML = startPiece;
         pieceContainer.appendChild(pieceSVG);
         
@@ -61,7 +62,11 @@ function createBoard() {
         });
 
         square.addEventListener('drop', function(event){
-            square.prepend(pieceContainer);
+            const data = event.dataTransfer.getData('text/plain');
+            if (data === pieceContainer) {
+                square.prepend(pieceContainer);
+            }
+            console.log('it works')
         })
     });
     
