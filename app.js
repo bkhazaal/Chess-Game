@@ -52,7 +52,7 @@ function createBoard() {
             console.log('clicked')
         });
 
-        pieceSVG.addEventListener('dragstart', function(event) {
+        pieceContainer.addEventListener('dragstart', function(event) {
             console.log(event);
         });
 
