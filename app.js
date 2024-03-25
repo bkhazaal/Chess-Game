@@ -78,7 +78,7 @@ function createBoard() {
     });
     
     function Turns() {
-        PlayerDisplay.textContent = "Player";
+        PlayerDisplay.textContent = "Chess Test";
     }
 
     Turns();
